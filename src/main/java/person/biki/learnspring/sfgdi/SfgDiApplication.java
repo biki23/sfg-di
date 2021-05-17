@@ -3,16 +3,17 @@ package person.biki.learnspring.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import person.biki.learnspring.sfgdi.controllers.ConstructorInjectController;
-import person.biki.learnspring.sfgdi.controllers.MyController;
-import person.biki.learnspring.sfgdi.controllers.PropertyInjectedController;
-import person.biki.learnspring.sfgdi.controllers.SetterInjectedController;
+import person.biki.learnspring.sfgdi.controllers.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		I18nController i18nController = (I18nController)ctx.getBean("i18nController") ;
+		System.out.println(i18nController.sayHello());
+
 		MyController myController = (MyController)ctx.getBean("myController");
 		System.out.println("----Primary----");
 		System.out.println(myController.sayHello());
